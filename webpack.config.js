@@ -1,15 +1,11 @@
 var path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const entry = {
-  'socket': './public/src/js/socket.js',
-}
-
 module.exports = {
-  entry,
+  entry: './public/src/js/index.js',
   output: {
     path: path.resolve(__dirname, 'public/build'),
-    filename: "js/[name].js"
+    filename: "js/index.js"
   },
   module: {
     rules: [
@@ -19,22 +15,14 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"]
+            presets: ["@babel/preset-env", "@babel/preset-react"]
           }
         }
       },
       {
         test: /\.scss$/,
         use: [
-          { 
-            loader: MiniCssExtractPlugin.loader, 
-            options: {
-              publicPath: (resourcePath, context) => {
-                return context + './public/build/css/'
-                console.log(resourcePath, context, 'pathsss');
-              }
-            }
-          },
+          { loader: MiniCssExtractPlugin.loader, },
           'css-loader',
           'sass-loader',
         ],
@@ -46,7 +34,7 @@ module.exports = {
   },
   plugins: [ 
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css'
+      filename: 'css/main.css'
     }) 
   ],
 };

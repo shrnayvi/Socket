@@ -23,10 +23,13 @@
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.0.0",
     "body-parser": "^1.19.0",
     "ejs": "^2.6.1",
     "express": "^4.17.1",
     "glob": "^7.1.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "socket.io": "^2.2.0"
   }
 }

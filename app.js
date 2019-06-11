@@ -21,7 +21,7 @@ const server = app.listen(8000, () => {
 
 const io = require('socket.io')(server);
 
-const roomList = ['private', 'public'];
+const roomList = ['public'];
 io.on('connection', (socket) => {
     socket.on('joinRoom', (data) => {
         let room = data.room;

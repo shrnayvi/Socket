@@ -19,9 +19,9 @@ const server = app.listen(8000, () => {
 });
 
 const io = require("socket.io")(server);
+
 io.of("/chat").on("connection", socket => {
-  socket.emit("test", { test: "test message" });
   socket.on("chat", data => {
-    socket.broadcast.emit('chat', data);
+    socket.broadcast.emit('MessageReceived', data);
   });
 });

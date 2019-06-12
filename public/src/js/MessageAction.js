@@ -8,10 +8,13 @@ export default (props) => (
         id="message"
         className="form-control"
         placeholder="Add Message"
+        name="message"
+        onChange={props.handleChange}
+        value={props.message}
       />
     </div>
     <div className="col-md-3 col-sm-2 col-2 pl-0 text-center send-btn">
-      <button id="send" className="btn btn-info">
+      <button type="submit" id="send" className="btn btn-info">
         Send
       </button>
     </div>

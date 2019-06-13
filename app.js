@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const Chat = require('./chat');
 
 var app = express();
 
@@ -20,8 +21,5 @@ const server = app.listen(8000, () => {
 
 const io = require("socket.io")(server);
 
-io.of("/chat").on("connection", socket => {
-  socket.on("chat", data => {
-    socket.broadcast.emit('MessageReceived', data);
-  });
-});
+/* Instantiate Chat */
+new Chat(io);

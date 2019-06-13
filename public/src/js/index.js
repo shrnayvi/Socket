@@ -21,7 +21,8 @@ class Chat extends Component {
     this.handleUser = this.handleUser.bind(this);
     this.handleMessage = this.handleMessage.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.chat.on('MessageReceived', data => {
+
+    this.chat.on('PublicMessageReceived', data => {
       this.setState({ messages: [...this.state.messages, { ...data, messageType: 'receive' }] });
     });
   }
@@ -38,7 +39,7 @@ class Chat extends Component {
   handleMessage(e) {
     e.preventDefault();
     this.setState({ message: '', messages: [...this.state.messages, { name: this.state.user, message: this.state.message, messageType: 'send' } ] });
-    this.chat.emit('chat', { name: this.state.user, message: this.state.message });
+    this.chat.emit('publicChat', { name: this.state.user, message: this.state.message });
   }
 
   render() {

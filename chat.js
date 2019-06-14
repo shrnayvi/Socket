@@ -10,6 +10,15 @@ class Chat {
         socket.on("publicChat", data => {
           this.broadcast(socket, 'PublicMessageReceived', data);
         });
+
+        socket.on('JoinRoom', data => {
+          socket.join(data.room)
+        });
+
+        socket.on('privateChat', data => {
+          const { room, name, message } = data;
+          socket.to(room).emit('privateChat', { name, message });
+        });
       });
   }
 

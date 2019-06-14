@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require("path");
 const Chat = require('./chat');
 
 var app = express();
@@ -7,7 +8,7 @@ var app = express();
 app.use("/static", express.static("./public"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res.render("index");
 });
 app.use(express.static(__dirname + "/../public"));
